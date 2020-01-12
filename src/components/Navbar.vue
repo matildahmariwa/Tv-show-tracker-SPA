@@ -1,22 +1,24 @@
 <template>
+    <div>
     <nav>
         <div class="container">
 
-                    <template v-if="user.loggedIn">
-                        <div class="nav-item">{{user.data.displayName}}</div>
-                        <li class="nav-item">
-                            <a class="nav-link" @click.prevent="signOut">Sign out</a>
-                        </li>
-                    </template>
-                    <template v-else>
-                        <li class="nav-item">
-                            <router-link to="login" class="nav-link">Login</router-link>
-                        </li>
+<!--                    <div v-if="user.loggedIn">-->
+<!--                        <div class="nav-item">{{user.data.email}}</div>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link" @click.prevent="signOut">Sign out</a>-->
+<!--                        </li>-->
+<!--                    </div>-->
+<!--                    <div v-else>-->
+<!--                        <li class="nav-item">-->
+<!--                            <router-link to="login" class="nav-link">Login</router-link>-->
+<!--                        </li>-->
 
-                    </template>
+<!--                    </div>-->
 
         </div>
     </nav>
+    </div>
 </template>
 <script>
     import { mapGetters } from "vuex";
@@ -24,7 +26,7 @@
     export default {
         computed: {
             ...mapGetters({
-// map `this.user` to `this.$store.getters.user`
+
                 user: "user"
             })
         },

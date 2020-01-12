@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
@@ -26,7 +27,7 @@ export default new Vuex.Store({
             commit("is_logged_in", user !== null);
             if (user) {
                 commit("set_user", {
-                    displayName: user.displayName,
+
                     email: user.email
                 });
             } else {
