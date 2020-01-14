@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+// import * as firebase from "firebase";
 import { db } from './config/db';
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -9,7 +10,8 @@ export default new Vuex.Store({
             data: null
         },
         movies:null,
-        newMovie:''
+        newMovie:'',
+
     },
     getters: {
         user(state){
@@ -24,9 +26,9 @@ export default new Vuex.Store({
         set_user(state, data) {
             state.user.data = data;
         },
-        add({newItem}) {
+        add({payload}) {
 
-            this.$firebaseRefs.db.ref('movies').push(newItem);
+            db.ref('movies').push(payload)
             this.$router.push('/dashboard')
         }
     },
@@ -43,8 +45,10 @@ export default new Vuex.Store({
             }
         },
 
-        adding({commit}, {newItem}) {
-            commit('add', newItem)
+        adding({commit}, payload) {
+            // eslint-disable-next-line no-console
+
+            commit('add', payload)
         }
     }
 });
