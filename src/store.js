@@ -5,18 +5,16 @@ import { db } from './config/db';
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
-        user: {
-            loggedIn: false,
-            data: null
-        },
-        movies:null,
-        newMovie:'',
+
+        movies:[],
+       items:'',
 
     },
     getters: {
         user(state){
             return state.user
         },
+
 
     },
     mutations: {
@@ -26,11 +24,12 @@ export default new Vuex.Store({
         set_user(state, data) {
             state.user.data = data;
         },
-        add({payload}) {
+        add_items(state, items){
+            state.items = items;
+            db.ref('movies').push(items)
+        },
 
-            db.ref('movies').push(payload)
-            this.$router.push('/dashboard')
-        }
+
     },
     actions: {
         fetchUser({commit}, user) {
@@ -45,10 +44,11 @@ export default new Vuex.Store({
             }
         },
 
-        adding({commit}, payload) {
+        add({commit},items) {
+            commit('add_items', items)
             // eslint-disable-next-line no-console
+            console.log(items)
 
-            commit('add', payload)
         }
     }
 });

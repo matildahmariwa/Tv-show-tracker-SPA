@@ -2,35 +2,49 @@
     <div>
         <div>
             <form>
-                <input type="text" placeholder="Enter movie name" name="name" v-model="newItem.name"> <br>
-                <input type="text" placeholder="Enter genre" name="genre" v-model="newItem.genre"><br>
-                <input type="text" placeholder="Enter rating" name="rating" v-model="newItem.rating"><br>
+                <input type="text" placeholder="Enter movie name" name="name" v-model="form.name"> <br>
+                <input type="text" placeholder="Enter genre" name="genre" v-model="form.genre"><br>
+                <input type="text" placeholder="Enter rating" name="rating" v-model="form.rating"><br>
                 <textarea name="cast" id="" cols="30" rows="10" placeholder="enter cast"
-                          v-model="newItem.cast"></textarea>
+                          v-model="form.cast"></textarea>
                 <br>
                 <textarea name="reviews" cols="30" rows="10" placeholder="enter reviews"
-                          v-model="newItem.reviews"></textarea>
+                          v-model="form.reviews"></textarea>
                 <br>
             </form>
             <button v-on:click="submitItems">Submit</button>
+
+            <div  v-for="movie in state.items" :key="movie.id"><v-btn @click="(item.id)">Delete</v-btn>
+                {{ movie.name }}
+            </div>
 
         </div>
     </div>
 </template>
 
 <script>
+
     export default {
 
         data() {
             return {
-                newItem: {}
+                form: {}
             }
         },
         methods: {
             submitItems() {
-                this.$store.dispatch('adding', this.newItem)
+                this.$store.dispatch('add',{
+                    items:{
+                        name: this.form.name,
+                        genre: this.form.genre,
+                        rating: this.form.rating,
+                        cast: this.form.cast,
+                        reviews: this.form.reviews,
+                    }
+                });
                 // eslint-disable-next-line no-console
-                // console.log(this.newItem)
+                console.log(this.form.name)
+                this.form = {}
             }
 
         }
