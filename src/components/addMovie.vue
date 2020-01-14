@@ -7,7 +7,7 @@
             <input type="text" placeholder="Enter rating" v-model="newItem.rating"><br>
             <textarea name="" id="" cols="30" rows="10" placeholder="enter cast" v-model="newItem.cast"></textarea> <br>
             <textarea name=""  cols="30" rows="10" placeholder="enter reviews" v-model="newItem.reviews"></textarea> <br>
-            <input type="submit" v-on:click="add" >
+            <input type="submit" v-on:click="submitItems" >
             </form>
         </div>
     </div>
@@ -25,32 +25,15 @@
         },
         data () {
             return {
-                newItem: {
-                    name: '',
-                    genre: '',
-                    rating: '',
-                    reviews: '',
-                    cast: '',
-                }
+                newItem: {}
             }
         },
         methods: {
-            add() {
-                this.$firebaseRefs.movies.push({
-                    name: this.newItem.name,
-                    price: this.newItem.genre,
-                    rating: this.newItem.rating,
-                    reviews: this.newItem.reviews,
-                    cast: this.newItem.cast,
-
-                });
-                this.newItem.name = '';
-                this.newItem.genre = '';
-                this.newItem.rating = '';
-                this.newItem.reviews= '';
-                this.newItem.cast= '';
-                this.$router.push('/dashboard')
+            submitItems(){
+                this.$store.dispatch('adding', this.newItem)
+                this.newItem= {}
             }
+
         }
     }
 

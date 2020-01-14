@@ -4,6 +4,7 @@ import { rtdbPlugin } from 'vuefire'
 import router from "./routes/route.js";
 
 import store from "./store";
+import vuetify from './plugins/vuetify';
 
 
 Vue.use(rtdbPlugin);
@@ -15,5 +16,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')
