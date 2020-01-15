@@ -1,17 +1,25 @@
 <template>
-  <div id="app">
 
-    <navbar></navbar>
-    <router-view></router-view>
-  </div>
+<div id="app">
+
+      <div  v-for="item in this.$store.getters.getMovies" :key="item.name">
+        {{ item.name }}<br /><br /><small >Delete</small>
+        <hr />
+      </div>
+</div>
+
 </template>
 
 <script>
-  import navbar from './components/Navbar';
+
+
   export default {
     name: 'app',
+    beforeCreate: function () {
+      this.$store.dispatch('setMovies')
+    },
     components: {
-      navbar,
+
     }
   }
 </script>

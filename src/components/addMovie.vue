@@ -14,9 +14,7 @@
             </form>
             <button v-on:click="submitItems">Submit</button>
 
-            <div  v-for="movie in state.items" :key="movie.id"><v-btn @click="(item.id)">Delete</v-btn>
-                {{ movie.name }}
-            </div>
+
 
         </div>
     </div>

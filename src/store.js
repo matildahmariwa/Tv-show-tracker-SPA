@@ -14,6 +14,9 @@ export default new Vuex.Store({
         user(state){
             return state.user
         },
+        getMovies:state=>{
+            return state.items
+        }
 
 
     },
@@ -26,9 +29,20 @@ export default new Vuex.Store({
         },
         add_items(state, items){
             state.items = items;
-            db.ref('movies').push(items)
+            db.collection('movies').add(items)
         },
+        setMovies: state => {
+            let items = [];
 
+            db.collection('movies').orderBy('name').onSnapshot((snapshot) => {
+                items = [];
+                snapshot.forEach((doc) => {
+                    items.push({ id: doc.id, title: doc.data().title })
+                });
+
+                state.items = items
+            })
+        }
 
     },
     actions: {
@@ -49,6 +63,10 @@ export default new Vuex.Store({
             // eslint-disable-next-line no-console
             console.log(items)
 
+        },
+        setMovies: context => {
+            context.commit('setMovies')
         }
     }
+
 });

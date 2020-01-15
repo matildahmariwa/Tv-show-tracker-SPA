@@ -11,7 +11,7 @@ let config={
     appId: "1:433917891798:web:bb35a74ae42e6db339a577"
 };
 let app = firebase.initializeApp(config);
-export const db = app.database();
+export const db = app.firestore();
 
 
 // firebase.auth().onAuthStateChanged(user => {
