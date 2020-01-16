@@ -1,46 +1,49 @@
+
 <template>
-    <div>
     <nav>
-        <div class="container">
+        <div class="nav-wrapper">
+            <!-- <a href="#" class="brand-logo">Logo</a> -->
+            <router-link to="/" class="brand-logo" tag="a">Home</router-link>
 
-<!--                    <div v-if="user.loggedIn">-->
-<!--                        <div class="nav-item">{{user.data.email}}</div>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" @click.prevent="signOut">Sign out</a>-->
-<!--                        </li>-->
-<!--                    </div>-->
-<!--                    <div v-else>-->
-<!--                        <li class="nav-item">-->
-<!--                            <router-link to="login" class="nav-link">Login</router-link>-->
-<!--                        </li>-->
-
-<!--                    </div>-->
-
+            <ul id="nav-mobile" class="right">
+                <li v-show="!user">
+                    <router-link to="/login">Login</router-link>
+                </li>
+                <li v-show="user">
+                    <router-link to="/todo">To Do</router-link>
+                </li>
+                <li v-show="user">
+                    <router-link to="/profile">Profile</router-link>
+                </li>
+                <li v-show="user">
+                    <a @click="signoutButtonPressed">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
-    </div>
 </template>
+
 <script>
-    import { mapGetters } from "vuex";
     import firebase from "firebase";
     export default {
-        computed: {
-            ...mapGetters({
-
-                user: "user"
-            })
+        data() {
+            return {
+                user: null
+            };
+        },
+        created() {
+            firebase.auth().onAuthStateChanged(user => {
+                this.user = user;
+            });
         },
         methods: {
-            signOut() {
-                firebase
-                    .auth()
-                    .signOut()
-                    .then(() => {
-                        this.$router.replace({
-                            name: ""
-                        });
-                    });
+            signoutButtonPressed(e) {
+                e.stopPropagation();
+                firebase.auth().signOut();
+                this.$router.push({ name: "Login" });
             }
         }
     };
 </script>
+
+

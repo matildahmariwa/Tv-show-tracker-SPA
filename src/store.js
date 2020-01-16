@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
 
-        movies:[],
+        movies:'',
        items:'',
 
     },
@@ -14,10 +14,9 @@ export default new Vuex.Store({
         user(state){
             return state.user
         },
-        getMovies:state=>{
-            return state.items
+        getMovies(state){
+            return state.movies
         }
-
 
     },
     mutations: {
@@ -31,17 +30,23 @@ export default new Vuex.Store({
             state.items = items;
             db.collection('movies').add(items)
         },
-        setMovies: state => {
+        setMovies(state){
+
             let items = [];
 
-            db.collection('movies').orderBy('name').onSnapshot((snapshot) => {
+            db.collection('movies').onSnapshot((snapshot) => {
                 items = [];
-                snapshot.forEach((doc) => {
-                    items.push({ id: doc.id, title: doc.data().title })
-                });
 
-                state.items = items
+                snapshot.docs.forEach((doc)=>{
+                    // eslint-disable-next-line no-console
+                    console.log(doc.data())
+                    items = doc.data()
+                })
+
+                state.movies = items;
+
             })
+
         }
 
     },
@@ -57,15 +62,14 @@ export default new Vuex.Store({
                 commit("set_user", null);
             }
         },
-
         add({commit},items) {
             commit('add_items', items)
             // eslint-disable-next-line no-console
             console.log(items)
 
         },
-        setMovies: context => {
-            context.commit('setMovies')
+        setMovies({commit}) {
+            commit('setMovies')
         }
     }
 

@@ -1,9 +1,14 @@
 <template>
 
-<div id="app">
 
-      <div  v-for="item in this.$store.getters.getMovies" :key="item.name">
-        {{ item.name }}<br /><br /><small >Delete</small>
+<div id="app">
+  <router-view></router-view>
+  <navbar></navbar>
+
+    <h1>This is the main view</h1>
+  {{shows}}
+      <div  v-for="item in items" :key="item">
+        {{ item}}<br /><br /><small >Delete</small>
         <hr />
       </div>
 </div>
@@ -11,15 +16,23 @@
 </template>
 
 <script>
-
-
+  import navbar from './components/Navbar'
+  import {mapState} from "vuex";
   export default {
     name: 'app',
-    beforeCreate: function () {
+    created() {
       this.$store.dispatch('setMovies')
     },
     components: {
-
+     navbar
+    },
+    computed:{
+      items(){
+        return this.$store.getters.getMovies
+      },
+      ...mapState({
+          shows: state=>state.movies
+      })
     }
   }
 </script>

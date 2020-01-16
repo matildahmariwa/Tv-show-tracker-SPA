@@ -32,13 +32,13 @@
         methods: {
             submitItems() {
                 this.$store.dispatch('add',{
-                    items:{
+
                         name: this.form.name,
                         genre: this.form.genre,
                         rating: this.form.rating,
                         cast: this.form.cast,
                         reviews: this.form.reviews,
-                    }
+
                 });
                 // eslint-disable-next-line no-console
                 console.log(this.form.name)
