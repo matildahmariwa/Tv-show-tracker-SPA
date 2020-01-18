@@ -5,9 +5,13 @@ import { db } from './config/db';
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
-
         movies:'',
        items:'',
+
+        user:{
+            loggedIn: false,
+            data: ''
+        }
 
     },
     getters: {
@@ -20,7 +24,7 @@ export default new Vuex.Store({
 
     },
     mutations: {
-        Is_logged_in(state, value) {
+        SET_LOGGED_IN(state, value) {
             state.user.loggedIn = value;
         },
         set_user(state, data) {
@@ -41,7 +45,7 @@ export default new Vuex.Store({
                     // eslint-disable-next-line no-console
                     console.log(doc.data())
                     items = doc.data()
-                })
+                });
 
                 state.movies = items;
 
@@ -52,10 +56,10 @@ export default new Vuex.Store({
     },
     actions: {
         fetchUser({commit}, user) {
-            commit("is_logged_in", user !== null);
+            commit("SET_LOGGED_IN", user !== null);
             if (user) {
                 commit("set_user", {
-
+                    displayName: user.displayName,
                     email: user.email
                 });
             } else {
@@ -63,7 +67,7 @@ export default new Vuex.Store({
             }
         },
         add({commit},items) {
-            commit('add_items', items)
+            commit('add_items', items),
             // eslint-disable-next-line no-console
             console.log(items)
 

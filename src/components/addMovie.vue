@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div>
+        <div class="form-info">
+            <h3>Enter movie information here</h3>
             <form>
                 <input type="text" placeholder="Enter movie name" name="name" v-model="form.name"> <br>
                 <input type="text" placeholder="Enter genre" name="genre" v-model="form.genre"><br>
@@ -13,8 +14,6 @@
                 <br>
             </form>
             <button v-on:click="submitItems">Submit</button>
-
-
 
         </div>
     </div>
@@ -50,3 +49,52 @@
 
 
 </script>
+
+<style>
+    form{
+        margin-left: 50px;
+
+    }
+    input{
+        border: none;
+        outline: none;
+        color: black;
+        -moz-box-shadow: 0 0 3px #ccc;
+        -webkit-box-shadow: 0 0 3px #ccc;
+        box-shadow: 0 0 3px #ccc;
+        height: 43px;
+        width: 360px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin-top: 30px;
+    }
+    textarea{
+        width: 360px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin-top: 7px;
+        border: none;
+        outline: none;
+        color: black;
+        -moz-box-shadow: 0 0 3px #ccc;
+        -webkit-box-shadow: 0 0 3px #ccc;
+        box-shadow: 0 0 3px #ccc;
+    }
+    button{
+        width: 125px;
+        height: 45px;
+        margin-top: 5px;
+        background-color: turquoise;
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        border-radius: 15px !important;
+        margin-left: 117px !important;
+        border: none;
+        box-shadow: 0 0 3px #ccc;
+    }
+    .form-info{
+        margin-bottom: 20px;
+    }
+</style>
