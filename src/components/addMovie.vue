@@ -52,7 +52,7 @@
 
 </script>
 
-<style>
+<style scoped>
     form{
         margin-left: 50px;
 

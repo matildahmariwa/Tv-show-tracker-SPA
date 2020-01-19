@@ -1,20 +1,34 @@
 <template>
     <div>
-       <ul>
-          <h1 id="logo">TV TRACKER</h1>
-           <li> <router-link to="/movies">Search movies</router-link></li>
-           <li> <router-link to="/add">Add Movie</router-link></li>
 
-           <template v-if="user.loggedIn">
-               <div class="nav-item">{{user.data.displayName}}</div>
-           <li> <button @click.prevent="signOut">Sign out</button></li>
-           </template>
-           <template v-else>
-           <li><router-link to="/auth">Login</router-link></li>
-           </template>
-           <li><router-link to="/">Admin</router-link></li>
+<!--        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">-->
+<!--            <button class="menu-icon" type="button" data-toggle="example-menu"></button>-->
+<!--            <div class="title-bar-title">Menu</div>-->
+<!--        </div>-->
+        <template class="top-bar" id="example-menu">
+            <div class="top-bar-left">
 
-       </ul>
+                <ul class="dropdown menu" data-dropdown-menu>
+
+                    <li>
+                        <router-link to="/movies">Search movies</router-link>
+                    </li>
+                    <li><router-link to="/add">Add Movie</router-link></li>
+                    <template v-if="user.loggedIn">-->
+                                       <div class="nav-item">{{user.data.displayName}}</div>
+                                   <li> <button @click.prevent="signOut" style="color:white">Sign out</button></li>
+                                   </template>
+                    <template v-else>
+                    <li><router-link to="/auth">Login</router-link></li>
+                    </template>
+                    <li><button><router-link to="/">Admin</router-link></button></li>
+
+                </ul>
+            </div>
+<!--            end of navigation-->
+
+        </template>
+
     </div>
 
 
@@ -44,25 +58,33 @@ export default {
         }
     }
 };
+
 </script>
 <style lang="scss">
     #logo{
         float:left;
 
-        padding-top: 5px;
-        color:white;
+
+        color:white !important;
     }
     ul{
-        background-color: black;
+        background-color:#000508;
         color:white;
-        /*margin-top: -57px !important;*/
         height:61px;
-    }
-li{
-    display:inline-block;
-    padding-right: 24px;
-    padding-top: 12px;
-    float:right;
+        color: white;
+        padding-left: 768px;
 
-}
+        li{
+            display:inline-block;
+            padding-right: 24px;
+            padding-top: 12px;
+            float:right;
+            a{
+                color:white;
+            }
+
+        }
+    }
+
+
 </style>

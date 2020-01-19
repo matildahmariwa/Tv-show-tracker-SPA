@@ -1,6 +1,7 @@
 import * as firebase from "firebase";
-import store from "../store";
 
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 
 let config={
     apiKey: "AIzaSyDQ2dXBMuIJ2EBYeVqucJpOF33C0tsFlLk",
@@ -14,8 +15,6 @@ let config={
 let app = firebase.initializeApp(config);
 export const db = app.firestore();
 
+const messaging = firebase.messaging();
 
-firebase.auth().onAuthStateChanged(user => {
-    store.dispatch("fetchUser", user);
-});
 
