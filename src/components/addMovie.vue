@@ -6,6 +6,7 @@
                 <input type="text" placeholder="Enter movie name" name="name" v-model="form.name"> <br>
                 <input type="text" placeholder="Enter genre" name="genre" v-model="form.genre"><br>
                 <input type="text" placeholder="Enter rating" name="rating" v-model="form.rating"><br>
+                <input type="url"  name="cover_image" v-model="form.cover_image" placeholder="cover image"><br>
                 <textarea name="cast" id="" cols="30" rows="10" placeholder="enter cast"
                           v-model="form.cast"></textarea>
                 <br>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-
+    import { uuid } from 'vue-uuid';
     export default {
 
         data() {
@@ -31,12 +32,13 @@
         methods: {
             submitItems() {
                 this.$store.dispatch('add',{
-
+                        id:uuid.v4(),
                         name: this.form.name,
                         genre: this.form.genre,
                         rating: this.form.rating,
                         cast: this.form.cast,
                         reviews: this.form.reviews,
+                        cover_image:this.form.cover_image
 
                 });
                 // eslint-disable-next-line no-console

@@ -2,7 +2,7 @@
     <div class="container">
         <div>
 
-            <router-link :to="{ name: 'Add' }" class="nav-link">Add Item</router-link>
+
             <h1>Movies</h1>
 
 

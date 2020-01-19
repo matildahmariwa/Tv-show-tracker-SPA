@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 // import * as firebase from "firebase";
 import { db } from './config/db';
 Vue.use(Vuex);
@@ -36,15 +37,15 @@ export default new Vuex.Store({
         },
         setMovies(state){
 
-            let items = [];
+
 
             db.collection('movies').onSnapshot((snapshot) => {
-                items = [];
+                let items = [];
 
                 snapshot.docs.forEach((doc)=>{
                     // eslint-disable-next-line no-console
-                    console.log(doc.data())
-                    items = doc.data()
+                    console.log(doc.data());
+                    items.push(doc.data())
                 });
 
                 state.movies = items;
