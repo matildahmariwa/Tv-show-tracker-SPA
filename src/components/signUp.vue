@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="grid-container">
         <form @submit.prevent="register">
         <input type="name" placeholder="Username" name="name"  class="inputs"  v-model="form.name"> <br>
         <input type="email" placeholder="email" name="email"  class="inputs"  v-model="form.email">
@@ -51,14 +51,17 @@
     }
 </script>
 
-<style>
+<style >
+    form{
+
+    }
     .inputs {
         border: none;
         box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
         height: 36px;
-        width: 208px;
         margin-bottom: 3px;
         margin-top: 20px;
+        width:200px;
     }
     #submit{
         width: 125px;

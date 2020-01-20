@@ -9,11 +9,11 @@
             <div class="top-bar-left">
 
                 <ul class="dropdown menu" data-dropdown-menu>
-
+                    <li><button><router-link to="/">Home</router-link></button></li>
                     <li>
-                        <router-link to="/movies">Search movies</router-link>
+                        <router-link to="">Search movies</router-link>
                     </li>
-                    <li><router-link to="/add">Add Movie</router-link></li>
+
                     <template v-if="user.loggedIn">-->
                                        <div class="nav-item">{{user.data.displayName}}</div>
                                    <li> <button @click.prevent="signOut" style="color:white">Sign out</button></li>
@@ -21,7 +21,7 @@
                     <template v-else>
                     <li><router-link to="/auth">Login</router-link></li>
                     </template>
-                    <li><button><router-link to="/">Admin</router-link></button></li>
+                    <li><button><router-link to="/admin">Admin</router-link></button></li>
 
                 </ul>
             </div>

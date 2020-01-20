@@ -40,7 +40,7 @@ const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
-	entry: './main.js.js',
+	entry: './main.js',
 
 	plugins: [
 		new webpack.ProgressPlugin(),

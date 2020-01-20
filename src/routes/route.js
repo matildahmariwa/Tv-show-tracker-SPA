@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '../components/Login';
-import Login from '../components/Dashboard';
 import addMovie from '../components/addMovie'
+import Login from '../components/loginForm'
 import movies from '../components/Movies'
 import auth from '../components/auth'
 import profile from '../components/Profile'
 import all from '../components/AllMovies'
 import showDetail from "../components/showDetail";
+import admin from "../components/Admin";
 
 Vue.use(Router);
 
@@ -24,20 +24,26 @@ const router= new Router({
             name: 'login',
             component: Login
         },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: admin
+        },
 
         {
             path: '/add',
             name: 'addMovie',
             component: addMovie
         },
+
         {
-            path: '/dashboard',
-            name: 'dashboard',
-            component: Dashboard,
+            path: '/movies',
+            name: 'movies',
+            component: movies,
 
         },
         {
-            path: '/movies',
+            path: '/mo',
             name: 'movies',
             component: movies,
 

@@ -13,6 +13,11 @@
                 <textarea name="reviews" cols="30" rows="10" placeholder="enter reviews"
                           v-model="form.reviews"></textarea>
                 <br>
+
+                <textarea name="description" cols="30" rows="10" placeholder="enter description"
+                          v-model="form.description"></textarea>
+                <br>
+
             </form>
             <button v-on:click="submitItems">Submit</button>
 
@@ -38,7 +43,8 @@
                         rating: this.form.rating,
                         cast: this.form.cast,
                         reviews: this.form.reviews,
-                        cover_image:this.form.cover_image
+                        cover_image:this.form.cover_image,
+                        description:this.form.description
 
                 });
                 // eslint-disable-next-line no-console

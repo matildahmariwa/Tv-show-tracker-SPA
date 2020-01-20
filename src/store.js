@@ -3,11 +3,13 @@ import Vuex from "vuex";
 
 import * as firebase from "firebase";
 import { db } from './config/db';
+
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         movies:'',
        items:'',
+        subscribed:'',
 
         user:{
             loggedIn: false,
@@ -37,8 +39,6 @@ export default new Vuex.Store({
         },
         setMovies(state){
 
-
-
             db.collection('movies').onSnapshot((snapshot) => {
                 let items = [];
 
@@ -55,6 +55,10 @@ export default new Vuex.Store({
         }
 
     },
+
+
+
+
     actions: {
         fetchUser({commit}, user) {
             commit("SET_LOGGED_IN", user !== null);

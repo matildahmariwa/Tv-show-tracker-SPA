@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="grid-container">
         <form @submit.prevent="login" >
 
             <div class="textbox">
@@ -13,9 +14,10 @@
 
             </div>
 
-            <button id="login">Login</button>
+            <button id="submit">Login</button>
 
         </form>
+    </div>
     </div>
 </template>
 
