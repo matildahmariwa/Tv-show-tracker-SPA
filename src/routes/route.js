@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import addMovie from '../components/addMovie'
 import Login from '../components/loginForm'
-import movies from '../components/Movies'
 import auth from '../components/auth'
 import profile from '../components/Profile'
 import all from '../components/AllMovies'
@@ -36,18 +35,8 @@ const router= new Router({
             component: addMovie
         },
 
-        {
-            path: '/movies',
-            name: 'movies',
-            component: movies,
 
-        },
-        {
-            path: '/mo',
-            name: 'movies',
-            component: movies,
 
-        },
         {
             path: '/profile',
             name: 'profile',

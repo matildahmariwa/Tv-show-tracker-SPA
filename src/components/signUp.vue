@@ -55,20 +55,5 @@
     form{
 
     }
-    .inputs {
-        border: none;
-        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-        height: 36px;
-        margin-bottom: 3px;
-        margin-top: 20px;
-        width:200px;
-    }
-    #submit{
-        width: 125px;
-        height: 45px;
-        margin-top: 7px;
-        background-color: turquoise;
-        border-radius: 5px;
-        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-    }
+
 </style>

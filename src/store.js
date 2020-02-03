@@ -9,20 +9,33 @@ export default new Vuex.Store({
     state: {
         movies:'',
        items:'',
-        subscribed:'',
+        subscribers:'',
+        sub:'',
 
         user:{
             loggedIn: false,
-            data: ''
+            data: '',
+            subscribed:false,
+        },
+        admin:{
+            loggedIn: false,
+            data: '',
         }
+
 
     },
     getters: {
         user(state){
             return state.user
         },
+        admin(state){
+            return state.admin
+        },
         getMovies(state){
             return state.movies
+        },
+        getSubscribers(state){
+          return state.sub
         }
 
     },
@@ -36,6 +49,9 @@ export default new Vuex.Store({
         add_items(state, items){
             state.items = items;
             db.collection('movies').add(items)
+        },
+        set_subscribed(state,status){
+            state.user.subscribed = status;
         },
         setMovies(state){
 
@@ -52,12 +68,26 @@ export default new Vuex.Store({
 
             })
 
+        },
+        setSubscribers(state){
+
+            db.collection('subscribers').onSnapshot((snapshot) => {
+                let subscribers = [];
+
+                snapshot.docs.forEach((doc)=>{
+                    // eslint-disable-next-line no-console
+                    console.log(doc.data());
+                    subscribers.push(doc.data())
+                });
+
+                state.sub = subscribers;
+
+            })
+
         }
 
+
     },
-
-
-
 
     actions: {
         fetchUser({commit}, user) {
@@ -79,7 +109,23 @@ export default new Vuex.Store({
         },
         setMovies({commit}) {
             commit('setMovies')
+        },
+        setSubscribers({commit}) {
+            commit('setSubscribers')
+        },
+        setSubscribed({commit},status) {
+            const messaging = firebase.messaging();
+            messaging.requestPermission();
+            db.collection('subscribers').add({
+
+                email: firebase.auth().currentUser.email,
+                displayName: firebase.auth().currentUser.displayName,
+            });
+
+            alert('You can now receive notifications!');
+            commit('set_subscribed',status)
         }
+
     }
 
 });

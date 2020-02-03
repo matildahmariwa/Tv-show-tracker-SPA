@@ -6,7 +6,8 @@
                 <input type="text" placeholder="Enter movie name" name="name" v-model="form.name"> <br>
                 <input type="text" placeholder="Enter genre" name="genre" v-model="form.genre"><br>
                 <input type="text" placeholder="Enter rating" name="rating" v-model="form.rating"><br>
-                <input type="url"  name="cover_image" v-model="form.cover_image" placeholder="cover image"><br>
+
+                <input type="url"  name="trailer" v-model="form.trailer" placeholder="trailer"><br>
                 <textarea name="cast" id="" cols="30" rows="10" placeholder="enter cast"
                           v-model="form.cast"></textarea>
                 <br>
@@ -44,7 +45,8 @@
                         cast: this.form.cast,
                         reviews: this.form.reviews,
                         cover_image:this.form.cover_image,
-                        description:this.form.description
+                        description:this.form.description,
+                        trailer:this.form.trailer
 
                 });
                 // eslint-disable-next-line no-console

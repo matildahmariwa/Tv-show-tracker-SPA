@@ -2,8 +2,11 @@
     <div>
         <div class="grid-x intro">
             <div class="cell large-6 medium-8 small-12 one">
+
                 <p class="description">
+
                     <span class="movie-name">SEE</span> <br>
+
                     An american drama action created by Sam levinson <br>
                     A virus has decimated humankind. Those who survived <br> emerged blind. Centuries later when twins
                     are born with
@@ -32,6 +35,10 @@
                                 <img v-bind:src="item.cover_image" >
                                 {{ item.name }}<br/>
                                     <i class="fas fa-star"></i>  {{ item.rating }}<br/>
+                                    {{ item.genre }}<br/>
+
+                                    <p> <router-link :to="{ name: 'item_show', params: { id: item.id }}">View details</router-link>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +46,6 @@
 
                 </div>
             </div>
-<!--                <router-link :to="{ name: 'item_show', params: { id: item.id }}">View details</router-link>-->
 
             </div>
         </div>
@@ -132,6 +138,8 @@
         border: none;
         width: 300px;
     }
-
+.fas{
+    color: #85C1E9;
+}
 
 </style>

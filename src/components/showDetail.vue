@@ -1,8 +1,9 @@
 <template>
     <div>
-        {{ item.genre }}<br/>
-        {{ item.rating }}<br/>
-        {{ item.cast }}<br/>
+<!--        {{ item.genre }}<br/>-->
+<!--        {{ item.rating }}<br/>-->
+<!--        {{ item.cast }}<br/>-->
+        {{$route.params.id}}
     </div>
 </template>
 

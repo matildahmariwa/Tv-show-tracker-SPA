@@ -2,9 +2,9 @@
     <div>
         <h4 id="welcome">ADMIN DASHBOARD</h4>
         <div>
-            <button @click="selectedComponent = 'adminMovies'" class="bins">All movies</button>
-            <button @click="selectedComponent = 'add'" class="bins">Add Movie</button>
-            <button @click="selectedComponent = 'ad'" class="bins">Active subscriptions</button>
+            <button @click="selectedComponent = 'adminMovies'" class="bins">Add Visitor</button>
+            <button @click="selectedComponent = 'add'" class="bins">All Visitors</button>
+            <button @click="selectedComponent = 'subscriptions'" class="bins">All Visitors</button>
         </div>
         <div class="">
             <keep-alive>
